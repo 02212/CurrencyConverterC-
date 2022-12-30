@@ -1,0 +1,127 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+#include <dos.h>
+#include <stdio.h>
+#include <iomanip>
+
+
+
+using namespace std;
+
+//loading screen
+void pragressBar()
+{
+
+    // Initialize char for printing
+    // loading bar
+    char a = 177, b = 219;
+
+    cout << ("\n\n\n\n");
+    cout << "\n\n\n\n\t\t\t\t\t", "Loading...\n\n";
+    cout << ("\t\t\t\t\t");
+
+    // Print initial loading bar
+    for (int i = 0; i < 26; i++)
+        cout << ("%c", a);
+
+    // Set the cursor again starting
+    // point of loading bar
+    cout << ("\r");
+    cout << ("\t\t\t\t\t");
+
+    // Print loading bar progress
+    for (int i = 0; i < 26; i++) {
+        cout << ("%c", b);
+        // Sleep for 1 second
+        Sleep(100);
+    }
+}
+
+void WaitingSpinner(const char* msg) {
+    static const char* spins = "|/-\\";
+    static const char* pSpin = spins;
+    const char spinner = *pSpin++;
+    if (!*pSpin) pSpin = spins;
+    printf("%s %c\r", msg, spinner);
+    fflush(stdout);
+}
+
+void india()
+{
+    int a = 10, b = 0, c = 10;
+    // The encoded string after removing first 31 characters
+    char str[] = "TFy!QJu ROo TNn(ROo)SLq SLq ULo+UHs UJq TNn*RPn/QPbEWS_JSWQAIJO^NBELPeHBFHT}TnALVlBLOFAkHFOuFETpHCStHAUFAgcEAelclcn^r^r\\tZvYxXyT|S~Pn SPm SOn TNn ULo0ULo#ULo-WHq!WFs XDt!";
+    // string's individual characters determine how many spaces or exclamation marks to draw consecutively.
+    while (a != 0) {
+
+        a = str[b++];
+
+        while (a-- > 64) {
+            if (++c == 90) {
+                c = 10;
+                putchar('\n');
+            }
+            else {
+                if (b % 2 == 0)
+                    putchar('!');
+                else
+                    putchar(' ');
+            }
+        }
+    }
+}
+int main()
+{
+    system("color 0F");
+    float currinput, exchange = 0,finalAmt;
+    string name, surname, fullname;
+    char exchangeName = ' ';
+    int currSelect = 0;
+    for (int i = 0; i < 50; i++) {
+        WaitingSpinner("\n\t\t\t\t\tPlease wait");
+        Sleep(1);
+        system("cls");
+    }
+    cout << "\n\t\t\t\t\tplease login with your name and surname\n";
+    cout << "\t\t\t\t\tName: "; cin >> name;
+    cout << "\t\t\t\t\tSurname: "; cin >> surname;
+    fullname = name + surname;
+    pragressBar();
+    system("cls");
+    india();
+    cout << "\n"<<setw(10) << "###########################################################";
+    cout << "\n" << setw(10) <<"Welcome "<<fullname<<" to Forex Exchange Of africa FEA\n";
+    cout << "_/\\\\\\\\\\\\\____/\\\\\\\\\\\\\\\\_______/\\\\\\\\\____________________________\n";
+    cout << " _/\\\/////////____/\\\////////////_____/\\\/////////\\\_____________________     \n";
+    cout << "  \/\\\_____________\/\\/________________/\\\/_______\/\\\____________________     \n";
+    cout << "  _\/\\\_____________\/\\\________________/\\\________\/\\\___________________      \n";
+    cout << "    _\/\\\\\\\\\\\____\/\\\\\\\\\\\_______\/\\\\\\\\\\\\\\\\_______________________  \n";
+    cout << "    _\/\\\/////////____\/\\\_______________\/\\\////////\/\\\_______________________  \n";
+    cout << "      \/\\\_____________\/\\\\\\\\\\\\\\\____\/\\\________\/\\\________________________\n";
+    cout << "      \///_______________\///////////////_____\///_________\///_______________________  \n";
+    cout << setw(10) <<"###########################################################";
+    pragressBar();
+    cout << setw(10) << "\t\t\t\t\tPlease select currency 1. USD, 2. EUR, 3. AUD, 4, GBP\n";
+    cin >> currSelect;
+    switch (currSelect)
+    {
+    case 1: exchange = 17.81; exchangeName = '$';
+        break;
+    case 2: exchange = 18.25; exchangeName = '€';
+        break;
+    case 3: exchange = 15.854; exchangeName = 'A$';
+        break;
+    case 4: exchange = 22.11; exchangeName = '£';
+        break;
+    }
+    cout << "\t\t\t\t\tplease enter money in zar"<<endl;
+    cin >> currinput;
+    finalAmt = currinput * exchange;
+    
+    cout << "\t\t\t\t\tYour currency is "<<exchangeName<<fixed << setprecision(2) << finalAmt<<"c";
+  
+    return 0;
+}
